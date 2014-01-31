@@ -33,7 +33,7 @@ FALLBACK:
 # connection/name resolution attempt takes to fail) as it first tries
 # to access the website directly before falling back.
 /? index.html
-/index.html? index.html
+index.html? index.html
 
 # Enable access to proxy.php, Google Analytics, and allow linking to
 # external websites. Will only work when the client is connected to
