@@ -185,16 +185,14 @@ jsl.interactions = (function () {
     function minify() {
         if (!validate(false)) {
             displayError('Please validate your JSON before minimizing it.');
-            console.log('Json is not valid');
         }
         else {
             var jsonVal = $('#json_input').val();
             try {
-                $('#json_input').val(jsonVal.replace(/\s/g, ""));
+                $('#json_input').val(jsonVal.replace(/\s(?=([^"\\]*(\\.|"([^"\\]*\\.)*[^"\\]*"))*[^"]*$)/g,""));
             } catch (e) {
-                console.log(e.message);
+                displayError('Error while minifying your JSON: ' + e.message);
             }
-            console.log('Attempt to minify json');
         }
         
         return false;
