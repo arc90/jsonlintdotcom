@@ -90,11 +90,12 @@ input.text, input.title {
 	margin-bottom: 1em;
 }
 
-#reformat, #validate, #compress {
+#reformat, #validate, #minify, #compress {
 	font-size: 1.65em;
 	color: #333;
 	padding-left: .5em;
 	padding-right: .5em;
+    margin-right: 10px;
 }
 
 .greenBorder {

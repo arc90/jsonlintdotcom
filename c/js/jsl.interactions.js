@@ -95,28 +95,33 @@ jsl.interactions = (function () {
     }
 
     /******* INTERACTION METHODS *******/
-
+    
     /**
      * Validate the JSON we've been given, displaying an error or success message.
-     * @return void
+     * @return bool whether the json is valid or not
     **/
-    function validate() {
+    function validate(verbose) {
         var lineNum,
             lineMatches,
             lineStart,
             lineEnd,
             jsonVal,
             result;
-            
+        
+        if (!verbose) {
+            hideAlertBox();
+        }
+        
         jsonVal = $('#json_input').val();
 
         try {
             result = jsl.parser.parse(jsonVal);
 
             if (result) {
-                $('#results').removeClass('error').addClass('success');
-                $('div.linedwrap').removeClass('redBorder').addClass('greenBorder');
-                $('#results').text('Valid JSON');
+                
+                if (verbose) {
+                    displaySuccess('Valid JSON');
+                }
 
                 if (reformat) {
                     $('#json_input').val(JSON.stringify(JSON.parse(jsonVal), null, "    "));
@@ -163,13 +168,36 @@ jsl.interactions = (function () {
                 $('#json_input').focus().caret(lineStart, lineEnd);
             }
 
-            $('#results').text(parseException.message);
-
-            $('#results').removeClass('success').addClass('error');
-            $('div.linedwrap').removeClass('greenBorder').addClass('redBorder');
+            if (verbose) {
+                displayError(parseException.message);
+            }
         }
 
         $('#loadSpinner').hide();
+        
+        return result;
+    }
+    
+    /**
+     * Minify the JSON we've been given, checking whether the format is valid, displaying an error or success message.
+     * @return void
+    **/
+    function minify() {
+        if (!validate(false)) {
+            displayError('Please validate your JSON before minimizing it.');
+            console.log('Json is not valid');
+        }
+        else {
+            var jsonVal = $('#json_input').val();
+            try {
+                $('#json_input').val(jsonVal.replace(/\s/g, ""));
+            } catch (e) {
+                console.log(e.message);
+            }
+            console.log('Attempt to minify json');
+        }
+        
+        return false;
     }
 
     /**
@@ -199,12 +227,28 @@ jsl.interactions = (function () {
             if (jsonVal.substring(0, 4).toLowerCase() === "http") {
                 $.post("proxy.php", {"url": jsonVal}, function (responseObj) {
                     $('#json_input').val(responseObj.content);
-                    validate();
+                    validate(true);
                 }, 'json');
             } else {
-                validate();
+                validate(true);
             }
 
+            return false;
+        });
+      
+        $('#minify').click(function() {
+            $('#results_header, #loadSpinner').show();
+            
+            var jsonVal = $.trim($('#json_input').val());
+            if (jsonVal.substring(0, 4).toLowerCase() === "http") {
+                $.post("proxy.php", {"url": jsonVal}, function (responseObj) {
+                    $('#json_input').val(responseObj.content);
+                    minify();
+                }, 'json');
+            } else {
+                minify();
+            }
+            
             return false;
         });
         
@@ -226,6 +270,40 @@ jsl.interactions = (function () {
             $('#json_input').val(jsonParam);
             $('#validate').click();
         }
+    }
+    
+    /**
+     * Hide the area reserved for success or error messages
+     * @return void
+    **/
+    function hideAlertBox() {
+        $('#results_header').hide();
+        $('#results').hide();
+        $('div.linedwrap').removeClass('redBorder').removeClass('greenBorder');
+    }
+    
+    /**
+     * Display a success message
+     * @return void
+    **/
+    function displaySuccess(text) {
+        $('#results_header').show();
+        $('#results').show();
+        $('#results').removeClass('error').addClass('success');
+        $('div.linedwrap').removeClass('redBorder').addClass('greenBorder');
+        $('#results').text(text);
+    }
+    
+    /**
+     * Display an error message
+     * @return void
+    **/
+    function displayError(text) {
+        $('#results_header').show();
+        $('#results').show();
+        $('#results').text(text);
+        $('#results').removeClass('success').addClass('error');
+        $('div.linedwrap').removeClass('greenBorder').addClass('redBorder');
     }
 
     return {
