@@ -146,6 +146,7 @@ jsl.interactions = (function () {
             }
 
             lineMatches = parseException.message.match(/line ([0-9]*)/);
+            console.log(lineMatches);
             if (lineMatches && typeof lineMatches === "object" && lineMatches.length > 1) {
                 lineNum = parseInt(lineMatches[1], 10);
 
@@ -161,13 +162,25 @@ jsl.interactions = (function () {
                 }
 
                 $('#json_input').focus().caret(lineStart, lineEnd);
+
+                // scroll to line error implementation
+                try {
+                  $('.lineno').each(function(e){
+                      if(this.innerText == lineNum) {
+                        $("#json_input").scrollTo($(this), 800);
+                      }
+                  });
+                  
+                }catch(e){ console.log(e); }
+
             }
 
             $('#results').text(parseException.message);
 
             $('#results').removeClass('success').addClass('error');
             $('div.linedwrap').removeClass('greenBorder').addClass('redBorder');
-        }
+
+          }
 
         $('#loadSpinner').hide();
     }
