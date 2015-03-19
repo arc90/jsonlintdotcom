@@ -146,7 +146,6 @@ jsl.interactions = (function () {
             }
 
             lineMatches = parseException.message.match(/line ([0-9]*)/);
-            console.log(lineMatches);
             if (lineMatches && typeof lineMatches === "object" && lineMatches.length > 1) {
                 lineNum = parseInt(lineMatches[1], 10);
 
