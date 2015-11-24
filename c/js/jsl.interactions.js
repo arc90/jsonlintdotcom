@@ -161,13 +161,25 @@ jsl.interactions = (function () {
                 }
 
                 $('#json_input').focus().caret(lineStart, lineEnd);
+
+                // scroll to line error implementation
+                try {
+                  $('.lineno').each(function(e){
+                      if(this.innerText == lineNum) {
+                        $("#json_input").scrollTo($(this), 800);
+                      }
+                  });
+                  
+                }catch(e){ }
+
             }
 
             $('#results').text(parseException.message);
 
             $('#results').removeClass('success').addClass('error');
             $('div.linedwrap').removeClass('greenBorder').addClass('redBorder');
-        }
+
+          }
 
         $('#loadSpinner').hide();
     }
