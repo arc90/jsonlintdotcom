@@ -57,10 +57,18 @@ jsl.format = (function () {
                 } 
                 break; 
             case ' ':
+                if (inString) {
+                    newJson += currentChar;
+                } else if (!json.charAt(i - 1).match(/[\s:]/)) {
+                    newJson += ' ';
+                }
+                break;
             case "\n":
             case "\t":
                 if (inString) {
                     newJson += currentChar;
+                } else if (json.charAt(i + 1).match(/[^\s}\]]/)) {
+                    newJson += ' ';
                 }
                 break;
             case '"': 
