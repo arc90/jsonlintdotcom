@@ -1,0 +1,42 @@
+CACHE MANIFEST
+
+# When updating any resources, you must bump this manifest file in
+# some way. The browser will only attempt to update resources if this
+# file’s content (i.e., the bytes, HTTP headers are irrelevant in this
+# situation) actually changes. The conventional means to do this with
+# static content is to include a revision number inside of the
+# manifest as a comment:
+#
+# revision=0
+
+# Normal static resources
+index.html
+c/js/json2.js
+c/js/jquery-1.6.1.min.js
+c/js/jquery-linedtextarea/jquery-linedtextarea.js
+c/js/jquery-linedtextarea/jquery-linedtextarea.css
+c/js/jsl.parser.js
+c/js/jsl.format.js
+c/js/jsl.interactions.js
+c/css/blueprint/compressed/screen.css
+c/css/blueprint/lib/ie.css
+c/css/blueprint/plugins/css-classes/css-classes.css
+c/css/screen.css
+c/images/logo_arc90.png
+c/images/kindling.png
+c/images/loadspinner.gif
+
+FALLBACK:
+# Special, GET parameters are parsed locally anyways so allow them to
+# work. We can only catch these URIs with fallback namespaces though,
+# so the browser takes a while to load them (however long the
+# connection/name resolution attempt takes to fail) as it first tries
+# to access the website directly before falling back.
+/? index.html
+index.html? index.html
+
+# Enable access to proxy.php, Google Analytics, and allow linking to
+# external websites. Will only work when the client is connected to
+# the Internet.
+NETWORK:
+*
