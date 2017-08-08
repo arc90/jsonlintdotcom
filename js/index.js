@@ -78,6 +78,11 @@ module.exports = new class Application {
                 ga('send', 'pageview', `/${node.getAttribute('data-ga')}`));
         });
 
+        $.one('.compress').addEventListener('click', evt => {
+            evt.preventDefault();
+            $.one('.compress').classList.toggle('active');
+        });
+
         return this;
     }
 
@@ -91,6 +96,10 @@ module.exports = new class Application {
             autofocus: true,
             mode: 'javascript'
         });
+
+        if(this.query.reformat === 'compress' && !$.one('.compress').classList.contains('active')){
+            $.one('.compress').classList.add('active')
+        }
 
         return this;
     }
@@ -121,7 +130,7 @@ module.exports = new class Application {
         // if reformat==compress, use minifier
         // if reformat==no, keep code as is
         // else beautify code
-        if (this.query.reformat === 'compress') {
+        if ($.one('.compress').classList.contains('active')) {
             code = minify(code) || code;
         } else if (this.query.reformat !== 'no') {
             code = beautify.js_beautify(code, {
