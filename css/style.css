@@ -393,7 +393,22 @@ main {
     background-color: #FBE3E4;
 }
 
-button[type="submit"] {
+
+button.compress{
+    cursor: pointer;
+}
+
+button.compress:focus{
+    outline:0;
+}
+
+button.compress.active {
+    background: #f3f3f3;
+    border: 1px solid #d1d1d1;
+    cursor: pointer;
+}
+
+button[type="submit"],button.compress {
     background-color: #fff;
     padding: 10px 15px;
     text-decoration: none;

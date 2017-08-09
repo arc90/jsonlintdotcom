@@ -65,11 +65,9 @@
 
       (function() {
         var s   = document.createElement('script');
-
         s.type  = 'text/javascript';
         s.async = true;
         s.src   = 'https://d35xxde4fgg0cx.cloudfront.net/assets/embedded.js';
-
         setup = function() { window.MemberfulEmbedded.setup(); }
 
         if(s.addEventListener) { s.addEventListener("load", setup, false); } else { s.attachEvent("onload", setup); }
@@ -135,6 +133,7 @@
                 <button type="submit" data-ga="validate">Validate JSON</button>
                 <button type="reset" data-ga="clear">Clear</button>
                 <button class="copy" data-ga="copy">Copy</button>
+                <button type="button" class="compress" data-ga="compress">Compress</button>
                 <div class="memberful-button">
                     <a href="https://jsonlint.memberful.com/checkout?plan=21158" data-ga="support">Support JSONLint for $2/Month</a>
                 </div>
