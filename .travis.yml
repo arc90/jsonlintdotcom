@@ -3,8 +3,9 @@ branches:
   only:
   - master
 node_js:
-- '6'
+- '7'
 before_install:
+- npm install -g npm
 - openssl aes-256-cbc -K $encrypted_2c4c9a008ff2_key -iv $encrypted_2c4c9a008ff2_iv
   -in deploy_rsa.enc -out deploy_rsa -d
 addons:
@@ -17,6 +18,6 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: npm run deploy
+  script: npm run deploy && pm2 kill
   on:
     branch: master

@@ -1,219 +1,218 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<!--<script type="text/javascript" src="http://s.servedby-buysellads.com/266667.js"></script>-->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="JSON Lint is a web based validator and reformatter for JSON, a lightweight data-interchange format.">
-	<title>
-        JSONLint - The JSON Validator.
-    </title>
-	<link rel="stylesheet" href="css/codemirror.css">
-	<link rel="stylesheet" href="css/style.css">
+    <title>JSONLint - The JSON Validator</title>
+    <meta charset="utf-8">
+    <meta name="description" content="JSONLint is the free online validator and reformatter tool for JSON, a lightweight data-interchange format.">
+    <meta name="twitter:card" value="summary">
+    <meta property="og:title" content="The JSON Validator">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://jsonlint.com">
+    <meta property="og:image" content="icons/icon-hires.png">
+    <meta property="og:description" content="JSONLint is the free online validator and reformatter tool for JSON, a lightweight data-interchange format.">
+    <meta name="robots" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="T1nWWoSoh2qccuR4z4J2MH9AuFVnl7vQHZhmFCzcILM" />
+
+
+    <link rel="shortcut icon" href="icons/favicon.ico">
+    <link href="icons/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="icons/apple-touch-icon-128x128.png" rel="apple-touch-icon" sizes="128x128" />
+    <link href="icons/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+    <link href="icons/apple-touch-icon-167x167.png" rel="apple-touch-icon" sizes="167x167" />
+    <link href="icons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+    <link href="icons/icon-hires.png" rel="icon" sizes="192x192" />
+    <script src="//m.servedby-buysellads.com/monetization.js" type="text/javascript"></script>
     <script>
-    	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    	ga('create', 'UA-69209117-1', 'auto');
-    	ga('send', 'pageview');
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-69209117-1', 'auto');
+        ga('send', 'pageview');
     </script>
     <script type='text/javascript'>
-      var googletag = googletag || {};
-      googletag.cmd = googletag.cmd || [];
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        (function() {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') +
+                '//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        })();
+    </script>
+    <script type='text/javascript'>
+        googletag.cmd.push(function() {
+            googletag.defineSlot('/3533890/Test', [728, 90], 'div-gpt-ad-1468936444454-0').addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+        });
+    </script>
+    <script type="text/javascript">
+      window.MemberfulOptions = {site: "https://jsonlint.memberful.com"};
+
       (function() {
-        var gads = document.createElement('script');
-        gads.async = true;
-        gads.type = 'text/javascript';
-        var useSSL = 'https:' == document.location.protocol;
-        gads.src = (useSSL ? 'https:' : 'http:') +
-          '//www.googletagservices.com/tag/js/gpt.js';
-        var node = document.getElementsByTagName('script')[0];
-        node.parentNode.insertBefore(gads, node);
+        var s   = document.createElement('script');
+        s.type  = 'text/javascript';
+        s.async = true;
+        s.src   = 'https://d35xxde4fgg0cx.cloudfront.net/assets/embedded.js';
+        setup = function() { window.MemberfulEmbedded.setup(); }
+
+        if(s.addEventListener) { s.addEventListener("load", setup, false); } else { s.attachEvent("onload", setup); }
+
+        ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
       })();
     </script>
-    <script type='text/javascript'>
-      googletag.cmd.push(function() {
-        googletag.defineSlot('/3533890/Test', [728, 90], 'div-gpt-ad-1468936444454-0').addService(googletag.pubads());
-        googletag.pubads().enableSingleRequest();
-        googletag.enableServices();
-      });
-    </script>
-	<script>
-	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.register('service-worker.js').then(function() {
-			console.log('CLIENT: service worker registration complete.');
-		}, console.error.bind(console));
-	}
-	</script>
+
 </head>
 
 <body>
-	<main>
-		<header>
-			<div id="headings">
-				<h1 id="headerText">
-					JSONLint
-				</h1>
-				<h3>
-					The JSON Validator
-				</h3>
+    <div class="bsa-cpc-inline"></div>
+    <header>
+        <nav>
+            <div class="dev-tools-logo">JSON</div>
+            <div class="logo">
+                <h1>JSONLint <span class="sub-title">- The JSON Validator</span></h1> </div>
+            <label for="drop" class="toggle">Menu</label>
+            <input type="checkbox" id="drop">
+            <ul class="menu">
+                <li class="dropdown">
+                    <label for="drop-1" class="toggle">More Developer Tools</label> <a href="#"><span class="three-lines"></span><span class="more-dev">More Developer</span> <span class="more-tools">Tools</span></a>
+                    <input type="checkbox" id="drop-1">
+                    <ul>
+                        <li class="jscompress"><a target="_blank" href="https://jscompress.com/"><strong>JSCompress</strong><br><span class="tagline-title">The JavaScript Compression Tool</span></a></li>
+                        <li class="keygen"><a target="_blank" href="https://randomkeygen.com/"><strong>RandomKeygen</strong><br><span class="tagline-title">The Random Password Generator</span></a></li>
+                        <li class="dns"><a target="_blank" href="https://dns-lookup.com/"><strong>DNS-Lookup</strong><br><span class="tagline-title">The Professional DNS & IP Lookup Tool</span></a></li>
+                        <li class="jsvalidate"><a target="_blank" href="https://validatejavascript.com/"><strong>ValidateJavaScript</strong><br><span class="tagline-title">Quickly Find & Fix JavaScript Errors</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul>
+                <li class="pro-button"><a href="https://jsoncompare.com/" target="_blank"><span class="more-dev">Try the New</span> Pro</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="ad top">
+            <!--<div id="bsa_1303970" data-serve="1303970" style="height: 90px;width: 728px;;"><script type='text/javascript'>_bsajs.drop('bsa_1303970');</script></div>-->
+            <!-- /3533890/Test -->
+            <div id='div-gpt-ad-1468936444454-0' style='height:90px; width:728px;     margin: auto;'>
+                <script type='text/javascript'>
+                    googletag.cmd.push(function() {
+                        googletag.display('div-gpt-ad-1468936444454-0');
+                    });
+                </script>
+            </div>
 
-				<a href="http://pro.jsonlint.com" class="pro" target="_blank">Try PRO →</a>
-			</div>
-			<aside>
-				<!--<div id="bsa_1303970" data-serve="1303970" style="height: 90px;width: 728px;;"><script type='text/javascript'>_bsajs.drop('bsa_1303970');</script></div>-->
-				<!-- /3533890/Test -->
-				<div id='div-gpt-ad-1468936444454-0' style='height:90px; width:728px;'>
-				<script type='text/javascript'>
-				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1468936444454-0'); });
-				</script>
-				</div>
-			</aside>
-		</header>
-		<form name="main">
-			<textarea id="code" name="code"></textarea>
-			<div style="clear: both;width: 100%;display: block;"></div>
-			<div class="validate fourty">
-				<button type="submit" data-ga="validate">Validate JSON</button>
-				<button type="reset" data-ga="clear">Clear</button>
-				<button type="button" class="compress" data-ga="compress">Compress</button>
-			</div>
-			<div class="sixty">
-				<div style="clear: both;width: 100%;height: 10px;display: block;"></div>
-				<div class="fourty pad">
-					<div class="ads">this is an AD &rarr;</div>
-				</div>
-				<div class="sixty pad">
-					<div id="textcta"></div>
-					<script src="include.php" type="text/javascript"></script>
-				</div>
-			</div>
-			<div style="clear: both;width: 100%;display: block;"></div>
-		</form>
-		<section id="result-container">
-			<h3>Results</h3>
-			<pre id="result"></pre>
-		</section>
-		<footer>
-			<aside>
-				<a href="https://www.github.com/circlecell/jsonlintdotcom" data-ga="sourceLink">Source is on GitHub</a>. Props to <a href="http://www.crockford.com/">Douglas Crockford</a> of <a href="http://www.json.org">JSON</a> and <a href="http://www.jslint.com">JS Lint</a> and <br /><a href="http://zaa.ch/">Zach Carter</a>, who provided the <a href="https://github.com/zaach/jsonlint"> pure JS implementation of jsonlint</a>.
-			</aside>
+            <script src="dummy-ads.js"></script>
+            <script src="blockfreead.php" type="text/javascript"></script>
+            <script>
+                window.onload = function() {
+                    var dummyAds = document.getElementById('adsense');
+                    if (!dummyAds || getComputedStyle(dummyAds).display !== 'block') {
+                        document.querySelector('.ad.top').innerHTML = blockFreeAd;
+                    }
+                }
+            </script>
+        </div>
+        <form name="main">
+            <textarea id="code" name="code" style="display: none;"></textarea>
+            <div class="validate">
+                <button type="submit" data-ga="validate">Validate JSON</button>
+                <button type="reset" data-ga="clear">Clear</button>
+                <button class="copy" data-ga="copy">Copy</button>
+                <button type="button" class="compress" data-ga="compress">Compress</button>
+                <div class="memberful-button">
+                    <a href="https://jsonlint.memberful.com/checkout?plan=21158" data-ga="support">Support JSONLint for $2/Month</a>
+                </div>
+            </div>
+        </form>
+        <section id="result-container">
+            <h3>Results</h3>
+            <pre id="result" class="error"></pre>
+        </section>
+        <!-- bsa-cpc -->
+        <div class="bsa-ad">
+          <div class="partner">
+            <p>JSONLint <strong>Partners</strong></p>
+            <sub>Check out their products!</sub>
+          </div>
+          <div class="bsa-cpc"></div>
+        </div>
 
-			<nav>
-			   <a href="#" data-ga="faq" id="faqButton">FAQ</a>
-			   <a href="https://buysellads.com/buy/detail/266667" target="_blank" data-ga="advertise">Advertise</a>
-			</nav>
-		</footer>
-
-		<article id="faq">
-			<h3>
-				FAQ
-			</h3>
-			<hr>
-			<div id="faqAccordion">
-				<h5>
-					What is JSONLint?
-				</h5>
-				<div>
-					<p>
-						JSONLint is a validator and reformatter for <a href="http://www.json.org/">JSON</a>, a lightweight data-interchange format.
-					</p>
-				</div>
-				<h5>
-					Why 'Lint'?
-				</h5>
-				<div>
-					<p>
-						Essentially, I'm just riding on <a href="http://www.jslint.com">JSLint's</a> coattails. The name 'lint' was originally used to find problems in C source files. It's not really valid here because JSON is just a protocol. Shameless? You bet!
-					</p>
-				</div>
-				<h5>
-					Why does it reformat my JSON?
-				</h5>
-				<div>
-					<p>
-						Because your code is ugly! Trust me on this one. What's that you say? It's not? Ok, well then here's <a href="http://www.jsonlint.com/?reformat=no">JSON Lint without the reformatter.</a>
-					</p>
-				</div>
-				<h5>
-					Any secret features?
-				</h5>
-				<div>
-					<p>
-						Sure, a few. You can input a URL and it'll scrape it for JSON and parse that.<br>
-						An example URL to test: <a href="/?json=http%3A%2F%2Fwww.reddit.com%2Fr%2Fprogramming%2Fcomments%2F9szpc%2Fjsonlint_a_handy_json_validator_and_reformatter.json" data-ga="redditUrlInput">http://www.reddit.com/r/programming/comments/9szpc/jsonlint_a_handy_json_validator_and_reformatter.json</a>
-					</p>
-					<p>
-						You can also provide JSON to lint in the URL if you link to JSON Lint with the "json" parameter. <a href="http://www.jsonlint.com?json=%7B%22hello%22%3A%20%22world%22%7D">Here's an example URL to test.</a>
-					</p>
-					<p>
-						Additionally, <a href="http://www.jsonlint.com/?reformat=compress">JSON Lint can also be used as a json compressor if you add ?reformat=compress to the URL.</a>
-					</p>
-				</div>
-				<h5>
-					What are some common errors?
-				</h5>
-				<div>
-					<dl>
-						<dt>
-							<code>Expecting 'STRING'</code>
-						</dt>
-						<dd>
-							You probably have an extra comma at the end of your collection. Something like: <code>{ "a": "b"<span class="highlight">,</span> }</code>
-						</dd>
-						<dt>
-							<code>Expecting 'STRING', 'NUMBER', 'NULL', 'TRUE', 'FALSE', '{', '['</code>
-						</dt>
-						<dd>
-							You probably have an extra comma at the end of your list. Something like: <code>[ "a", "b"<span class="highlight">,</span> ]</code>
-							<br>
-							You also may have not enclosed your collection keys in quotes. Proper format for a collection is: <code>{ "key": "value" }</code>
-						</dd>
-					</dl>
-					<p>
-						Be sure to follow <a href="http://www.json.org/">JSON's syntax</a> properly. For example, <strong>always use double quotes, always quotify your keys, and remove all callback functions</strong>.
-					</p>
-				</div>
-				<h5>
-					A friend and I pasted the same JSON in and got different results. Wat do?
-				</h5>
-				<div>
-					<p>
-						If you and your friend are on different systems (Win/Unix), this is possible due to the way windows handles newlines. Essentially, if you have just newline characters (\n) in your JSON and paste it into JSONLint from a windows machine, it can validate it as valid erroneously since Windows may need a carriage return (\r) as well to detect newlines properly.
-					</p>
-					<p>
-						The solution: Either use direct URL input, or make sure your content's newlines match the architecture your system expects!
-					</p>
-				</div>
-				<h5>
-					I've got feedback!
-				</h5>
-				<div>
-					Great - hit us up on GitHub.
-				</div>
-			</div>
-		</article>
-	</main>
-
-
-
-	<script>
-	(function() {
-		setTimeout(function () {
-			var div = document.getElementById('div-gpt-ad-1464356486655-0');
-			if(!div) {
-				// this is dev environment
-				return;
-			}
-			if(div.offsetWidth === 0 || div.offsetHeight === 0) {
-			//if(div.innerHTML == '') {
-				var newdiv = document.createElement('div');
-					newdiv.innerHTML = '<div style="clear: both;width: 100%;height: 10px;display: block;"></div><div class="fourty pad"><div class="ads">this is an AD →</div></div><div class="sixty pad"><a href="http://bit.ly/23cf3tp" class="cta" data-ga="textad" target="_blank"><img src="https://pbs.twimg.com/profile_images/615675308243488768/_d8TRzzL_400x400.png" style="float: left;width: 60px;border: 1px solid #e1e1e1; border-radius: 2px;margin: 0 10px 0 0;"><strong>Backup your code in the cloud!</strong><br>Host unlimited private projects, for free with BitBucket.<div style="clear: both;width: 100%;display: block;"></div></a></div>';
-				div.parentNode.insertBefore(newdiv, div.nextSibling);
-			}
-		}, 1000);
-	})();
-	</script>
+        <script>
+        (function() {
+          if (typeof _bsa !== 'undefined' && _bsa) {
+            _bsa.init('default', 'CVADT27Y', 'placement:jsonlintcom', {
+              target: '.bsa-cpc',
+              align: 'horizontal',
+              disable_css: 'true'
+            });
+          }
+        })();
+        window.onload = function() {
+          if (document.getElementsByClassName("_default_").length > 0) {
+            document.getElementsByClassName("bsa-ad")[0].style.display = "block";
+          }
+        }
+        </script>
+        <!-- /bsa-cpc -->
+        <div class="info">
+            <p class="heading">About JSONLint?</p>
+            <p>JSONLint is a validator and reformatter for JSON, a lightweight data-interchange format. Copy and paste, directly type, or input a URL in the editor above and let JSONLint tidy and validate your messy JSON code.</p>
+            <p class="heading">Tips & Tricks</p>
+            <ul>
+                <li>You can directly input a URL into the editor and JSONLint will scrape it for JSON and parse it.</li>
+                <li>You can provide JSON to lint in the URL if you link to JSONLint with the <code>"json"</code> parameter. Here's an <a href="http://jsonlint.com/?json=%7B%22hello%22:%20%22world%22%7D" target="_blank">example URL to test</a>.</li>
+                <li>JSONLint can also be used as a JSON compressor if you add <code>?reformat=compress</code> to the URL.</li>
+            </ul>
+            <p class="heading">Common Errors</p>
+            <ul>
+                <li>Expecting <code>'STRING'</code> - You probably have an extra comma at the end of your collection. Something like <code>{ "a": "b", }</code></li>
+                <li>Expecting <code>'STRING'</code>, <code>'NUMBER'</code>, <code>'NULL'</code>, <code>'TRUE'</code>, <code>'FALSE'</code>, <code>'{'</code>, <code>'['</code> - You probably have an extra comma at the end of your list. Something like: <code>["a", "b", ]</code></li>
+                <li>Enclosing your collection keys in quotes. Proper format for a collection is <code>{ "key": "value" }</code></li>
+                <li>Make sure you follow <a href="http://www.json.org/" target="_blank">JSON's syntax</a> properly. For example, always use double quotes, always quotify your keys, and remove all callback functions.</li>
+            </ul>
+            <p class="heading">Different Results</p>
+            <p>If you use a Windows computer you may end up with different results. This is possibly due to the way Windows handles newlines. Essentially, if you have just newline characters <code>(\n)</code> in your JSON and paste it into JSONLint from a Windows computer, it may validate it as valid erroneously since Windows may need a carriage return <code>(\r)</code> as well to detect newlines properly. As a solution, either use direct URL input, or make sure your content's newlines match the architecture your system expects!</p>
+            <p class="heading">Credits</p>
+            <p>Maintained by CircleCell. Thanks to <a href="http://www.crockford.com/" target="_blank">Douglas Crockford</a> of JSON and JS Lint, and <a href="http://zaa.ch/" target="_blank">Zach Carter</a>, who built a <a href="https://github.com/zaach/jsonlint">pure JavaScript implementation</a>. You can download the <a href="https://www.github.com/circlecell/jsonlintdotcom" target="_blank" data-ga="sourceLink">JSONLint source code on GitHub</a>.</p>
+        </div>
+        <div class="ad bottom">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- JSONLint Footer -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8400268452481648" data-ad-slot="3654656999" data-ad-format="auto"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        </main>
+        <footer>
+            &copy; 2017 JSONLint.com &mdash;
+            <a href="https://www.buysellads.com/buy/detail/266667/zone/1303970" target="_blank" data-ga="advertise">Advertise Here</a>
+        </footer>
+       <script>
+            (function(){
+            if(typeof _bsa !== 'undefined' && _bsa) {
+            // format, zoneKey, segment:value, options
+            _bsa.init('flexbar', 'C6ADVKE', 'placement:jsonlint', {
+            align: 'fixedtop'
+            });
+            }
+            })();
+        </script>
 </body>
+
 </html>

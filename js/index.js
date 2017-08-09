@@ -1,18 +1,37 @@
-/* global ga */
 import CodeMirror from 'codemirror/lib/codemirror';
-import jsonlint from 'exports?jsonlint!jsonlint/web/jsonlint';
-import jsonParse from 'exports?json_parse!json2/json_parse';
+import jsonlint from 'jsonlint-mod';
 import beautify from 'js-beautify/js/lib/beautify';
 import minify from 'jsonminify';
+import Clipboard from 'clipboard';
 import $ from 'balajs';
+
 import 'codemirror/mode/javascript/javascript';
+
+// Fold
+import 'codemirror/addon/fold/foldcode';
+import 'codemirror/addon/fold/foldgutter';
+import 'codemirror/addon/fold/brace-fold';
+import 'codemirror/addon/fold/foldgutter.css';
+
+// Search
+import 'codemirror/addon/dialog/dialog.css';
+import 'codemirror/addon/search/matchesonscrollbar.css';
+import 'codemirror/addon/dialog/dialog';
+import 'codemirror/addon/search/searchcursor';
+import 'codemirror/addon/search/search';
+import 'codemirror/addon/scroll/annotatescrollbar';
+import 'codemirror/addon/search/matchesonscrollbar';
+import 'codemirror/addon/search/jump-to-line';
+
+import 'codemirror/lib/codemirror.css';
+
+import '../css/style.css';
 import fetchExternal from './fetch-external';
 import parseQuery from './parse-query';
 
-
 const doc = document;
 
-module.exports = new class Application {
+class Application {
     constructor() {
         const form = this.form = doc.forms.main;
         const query = this.query = parseQuery();
@@ -34,48 +53,65 @@ module.exports = new class Application {
 
         // if json parameter is given, use it
         // URL (where JSON is located) is also allowed
-        if (query.json) {
-            this.code = query.json;
+
+        const paramJSON = typeof localStorage.onloadJSONParameter !== 'undefined'
+            ? localStorage.onloadJSONParameter : query.json;
+
+        if (paramJSON) {
+            this.code = paramJSON;
+            localStorage.removeItem('onloadJSONParameter');
             this.go();
         }
     }
 
     // registers events
     registerEvents() {
+        const copyButton = $.one('.copy');
+
+        // listen to changes at location.hash
+        window.addEventListener('hashchange', () => {
+            const query = this.query = parseQuery();
+            if (query.json) {
+                this.code = query.json;
+            }
+
+            this.go();
+        });
+
         // when user types something, remove highlighting from "bad" line
         this.editor.on('change', () => this.highlightErrorLine(null));
 
         // when user submits form (eg presses "Validate" button), call "go" method
-        this.form.addEventListener('submit', evt => {
+        this.form.addEventListener('submit', (evt) => {
             evt.preventDefault();
             this.go();
         });
 
         // when user clicks "Clear" button, assign empty string to the "code" property
-        this.form.addEventListener('reset', evt => {
+        this.form.addEventListener('reset', (evt) => {
             evt.preventDefault();
             this.code = '';
         });
 
         // when Ctrl-Enter is pressed, run "go" method
-        doc.addEventListener('keyup', evt => {
+        doc.addEventListener('keyup', (evt) => {
             const ENTER_KEY = 13;
             if (evt.ctrlKey && evt.keyCode === ENTER_KEY) {
                 this.go();
             }
         });
 
-        // expands/unexpands faq by clicking #faqButton
-        $.one('#faqButton').addEventListener('click', evt => {
-            evt.preventDefault();
-            $.one('#faq').classList.toggle('expand');
-        });
+        copyButton.addEventListener('click', evt => evt.preventDefault());
 
         // initializes Google Analytics tracking
         // when user clicks on [data-ga="blah"], call ga('send', 'pageview', '/blah');
-        $('[data-ga]').forEach(node => {
-            node.addEventListener('click', () =>
-                ga('send', 'pageview', `/${node.getAttribute('data-ga')}`));
+        for (const node of $('[data-ga]')) {
+            node.addEventListener('click', () => // eslint-disable-line no-loop-func
+                ga('send', 'pageview', `/${node.getAttribute('data-ga')}`)); // eslint-disable-line no-undef
+        }
+
+        new Clipboard(copyButton, {
+            text: () => this.code
         });
 
         $.one('.compress').addEventListener('click', evt => {
@@ -94,7 +130,13 @@ module.exports = new class Application {
             matchBrackets: true,
             indentWithTabs: true,
             autofocus: true,
-            mode: 'javascript'
+            mode: 'javascript',
+            foldGutter: true,
+            gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter']
+        });
+
+        this.editor.addKeyMap({
+            'Ctrl-Enter': () => this.go()
         });
 
         if(this.query.reformat === 'compress' && !$.one('.compress').classList.contains('active')){
@@ -154,19 +196,7 @@ module.exports = new class Application {
 
         try {
             jsonlint.parse(code);
-
-            try {
-                // use another parser to check for repeated properties and bad hidden chars
-                jsonParse(code);
-
-                this.notify(true, 'Valid JSON');
-            } catch (e) {
-                // e.at contains char number, converting it to line number
-                const lineNumber = code.substring(0, e.at).split('\n').length - 1;
-
-                this.highlightErrorLine(lineNumber);
-                this.notify(false, `${e.name}: ${e.message}`);
-            }
+            this.notify(true, 'Valid JSON');
         } catch (e) {
             // retrieve line number from error string
             lineMatches = e.message.match(/line ([0-9]*)/);
@@ -206,4 +236,6 @@ module.exports = new class Application {
 
         return this;
     }
-};
+}
+
+module.exports = new Application();

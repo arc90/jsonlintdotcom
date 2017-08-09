@@ -7,7 +7,7 @@
       "repo" : "git@github.com:circlecell/jsonlintdotcom.git",
       "path" : "/var/web/jsonlint.com",
       "ssh_options": ["StrictHostKeyChecking=no", "PasswordAuthentication=no"],
-      "post-deploy" : "rm -rf node_modules; npm install; npm run bundle"
-    },
+      "post-deploy" : "npm install && npm run build"
+    }
   }
 }
